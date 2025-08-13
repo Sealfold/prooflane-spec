@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Search Chunk",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "text_hash",
+    "text_len"
+  ],
+  "properties": {
+    "chunk_id": {
+      "type": "string"
+    },
+    "text_hash": {
+      "type": "string"
+    },
+    "text_len": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "page_hint": {
+      "type": "integer"
+    },
+    "offset_hint": {
+      "type": "integer"
+    }
+  }
+}

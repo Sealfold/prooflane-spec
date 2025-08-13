@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow State",
+  "type": "object",
+  "required": [
+    "version",
+    "states",
+    "initial_state",
+    "current_state",
+    "transitions"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "initial_state": {
+      "type": "string"
+    },
+    "current_state": {
+      "type": "string"
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "guards": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}
