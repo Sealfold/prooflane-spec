@@ -1,0 +1,24 @@
+{
+  "format": "PROOFLANE",
+  "spec_version": "0.1",
+  "title": "AI-Ready Document Example",
+  "created": "2025-01-13T10:00:00Z",
+  "doc_id": "pla:demo:rag:example",
+  "latest_commit": "pla:demo:rag:root",
+  "commits": [
+    "history/0001.json"
+  ],
+  "workflow": {
+    "state": "workflow/state.json",
+    "log": "workflow/log.jsonl"
+  },
+  "search": {
+    "chunks": "search/chunks.jsonl",
+    "embeddings": "search/embeddings.bin",
+    "meta": "search/metadata.json"
+  },
+  "security": {
+    "trustchain": "security/trustchain.json",
+    "policies": "security/policies.json"
+  }
+}

@@ -1,0 +1,3 @@
+{"ts": "2025-01-13T10:00:00Z", "actor": "john.doe@example.com", "action": "create_document", "meta": {"comment": "Initial document creation"}}
+{"ts": "2025-01-13T10:05:00Z", "actor": "john.doe@example.com", "action": "add_content", "meta": {"comment": "Added document content"}}
+{"ts": "2025-01-13T10:10:00Z", "actor": "john.doe@example.com", "action": "submit_for_review", "meta": {"comment": "Ready for review"}}

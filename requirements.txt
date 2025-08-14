@@ -1,0 +1,15 @@
+# Prooflane Validator Dependencies
+# Core validation libraries
+jsonschema>=4.17.0
+jsonschema-specifications>=2023.03.6
+
+# Optional: For enhanced validation features
+# cryptography>=41.0.0  # For signature verification (future)
+# cbor2>=5.4.0         # For COSE signature support (future)
+# requests>=2.31.0     # For timestamp anchor validation (future)
+
+# Development dependencies (optional)
+# pytest>=7.4.0        # For running tests
+# pytest-cov>=4.1.0    # For coverage reports
+# black>=23.0.0        # For code formatting
+# flake8>=6.0.0        # For linting

@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "states": ["draft", "review", "approved", "archived"],
+  "initial_state": "draft",
+  "current_state": "draft",
+  "transitions": [
+    {
+      "from": "draft",
+      "to": "review",
+      "action": "submit_for_review",
+      "guard": "has_content"
+    },
+    {
+      "from": "review",
+      "to": "approved",
+      "action": "approve",
+      "guard": "reviewer_approved"
+    },
+    {
+      "from": "review",
+      "to": "draft",
+      "action": "request_changes",
+      "guard": "reviewer_requests_changes"
+    },
+    {
+      "from": "approved",
+      "to": "archived",
+      "action": "archive",
+      "guard": "retention_period_met"
+    }
+  ]
+}

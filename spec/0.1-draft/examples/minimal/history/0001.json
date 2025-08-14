@@ -1,0 +1,17 @@
+{
+  "parent": null,
+  "timestamp": "2025-01-13T10:00:00Z",
+  "author": {
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  "purpose": "Initial document creation",
+  "delta": {
+    "added": ["manifest.json", "history/0001.json", "workflow/state.json", "workflow/log.jsonl", "canonical/index.html"],
+    "changed": [],
+    "removed": []
+  },
+  "commit_id": "pla:demo:root",
+  "signatures": [],
+  "anchors": []
+}

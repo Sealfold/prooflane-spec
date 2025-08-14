@@ -1,0 +1,7 @@
+{
+  "encoder": "text-embedding-ada-002",
+  "dim": 1536,
+  "created": "2025-01-13T10:00:00Z",
+  "align": "none",
+  "notes": "Generated using OpenAI text-embedding-ada-002 model for RAG system integration"
+}
