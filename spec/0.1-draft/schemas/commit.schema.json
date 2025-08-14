@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prooflane Commit",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "author",
+    "purpose",
+    "delta",
+    "signatures",
+    "commit_id"
+  ],
+  "properties": {
+    "parent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "author": {
+      "type": "object",
+      "required": [
+        "name",
+        "email"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "delta": {
+      "type": "object"
+    },
+    "workflow_effects": {
+      "type": "array"
+    },
+    "signatures": {
+      "type": "array"
+    },
+    "anchors": {
+      "type": "array"
+    },
+    "commit_id": {
+      "type": "string"
+    }
+  }
+}

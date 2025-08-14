@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Document - Prooflane v0.1</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .header { background: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .content { line-height: 1.6; }
+        .footer { margin-top: 40px; padding: 20px; background: #f9f9f9; border-radius: 5px; }
+        .badge { display: inline-block; padding: 5px 10px; margin: 5px; border-radius: 3px; font-size: 12px; }
+        .badge.core { background: #007bff; color: white; }
+        .badge.verified { background: #28a745; color: white; }
+        .badge.workflow { background: #ffc107; color: black; }
+        .deep-link { color: #007bff; text-decoration: none; }
+        .deep-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Example Document</h1>
+        <p><strong>Document ID:</strong> <span id="doc-id">pla:demo:example</span></p>
+        <p><strong>Created:</strong> <span id="created">2025-01-13T10:00:00Z</span></p>
+        <p><strong>Latest Commit:</strong> <a href="#commit:pla:demo:root" class="deep-link" id="latest-commit">pla:demo:root</a></p>
+        
+        <div class="badges">
+            <span class="badge core">PLA-Core</span>
+            <span class="badge verified">Verified</span>
+            <span class="badge workflow">Draft</span>
+        </div>
+    </header>
+
+    <main class="content">
+        <h2>Document Content</h2>
+        <p>This is an example document demonstrating the Prooflane v0.1 specification. It shows how documents can maintain their provenance, workflow state, and verification status across system boundaries.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Provenance:</strong> Complete commit history with cryptographic verification</li>
+            <li><strong>Workflow:</strong> State machine with append-only event logging</li>
+            <li><strong>Verification:</strong> Digital signatures and timestamp anchoring</li>
+            <li><strong>Accessibility:</strong> Semantic HTML with proper navigation</li>
+        </ul>
+
+        <h3>Commit History</h3>
+        <p>View the complete commit history: <a href="#commit:pla:demo:root" class="deep-link">Initial Creation</a></p>
+
+        <h3>Workflow Status</h3>
+        <p>Current workflow state: <strong>Draft</strong></p>
+        <p>View workflow events: <a href="#workflow:log" class="deep-link">Workflow Log</a></p>
+    </main>
+
+    <footer class="footer">
+        <h4>Document Metadata</h4>
+        <p><strong>Format:</strong> PROOFLANE v0.1</p>
+        <p><strong>Conformance Class:</strong> PLA-Core</p>
+        <p><strong>Validation Status:</strong> ✅ Valid</p>
+        <p><strong>Last Verified:</strong> 2025-01-13T10:00:00Z</p>
+        
+        <h4>Deep Links</h4>
+        <ul>
+            <li><a href="#commit:pla:demo:root" class="deep-link">Commit: pla:demo:root</a></li>
+            <li><a href="#workflow:state" class="deep-link">Workflow State</a></li>
+            <li><a href="#workflow:log" class="deep-link">Workflow Log</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Deep linking support
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const target = document.querySelector(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        target.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }
+        });
+
+        // Update badges based on workflow state
+        function updateWorkflowBadge(state) {
+            const workflowBadge = document.querySelector('.badge.workflow');
+            workflowBadge.textContent = state.charAt(0).toUpperCase() + state.slice(1);
+            
+            // Update colors based on state
+            const colors = {
+                'draft': '#ffc107',
+                'review': '#17a2b8',
+                'approved': '#28a745',
+                'archived': '#6c757d'
+            };
+            workflowBadge.style.background = colors[state] || '#ffc107';
+            workflowBadge.style.color = state === 'draft' ? 'black' : 'white';
+        }
+
+        // Initialize with draft state
+        updateWorkflowBadge('draft');
+    </script>
+</body>
+</html>

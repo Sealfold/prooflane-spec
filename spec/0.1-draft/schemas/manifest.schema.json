@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prooflane Manifest",
+  "type": "object",
+  "required": [
+    "format",
+    "spec_version",
+    "title",
+    "created",
+    "latest_commit",
+    "commits",
+    "workflow",
+    "search",
+    "security"
+  ],
+  "properties": {
+    "format": {
+      "const": "PROOFLANE"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "doc_id": {
+      "type": "string"
+    },
+    "latest_commit": {
+      "type": "string"
+    },
+    "commits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "workflow": {
+      "type": "object"
+    },
+    "search": {
+      "type": "object"
+    },
+    "security": {
+      "type": "object"
+    }
+  }
+}

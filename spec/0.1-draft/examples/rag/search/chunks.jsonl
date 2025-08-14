@@ -1,0 +1,5 @@
+{"chunk_id": "chunk_001", "text_hash": "sha256:a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456", "text_len": 150, "role": "title", "page_hint": 1, "offset_hint": 0}
+{"chunk_id": "chunk_002", "text_hash": "sha256:b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678", "text_len": 200, "role": "body", "page_hint": 1, "offset_hint": 150}
+{"chunk_id": "chunk_003", "text_hash": "sha256:c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234567890", "text_len": 180, "role": "body", "page_hint": 1, "offset_hint": 350}
+{"chunk_id": "chunk_004", "text_hash": "sha256:d4e5f6789012345678901234567890abcdef1234567890abcdef1234567890ab", "text_len": 160, "role": "body", "page_hint": 1, "offset_hint": 530}
+{"chunk_id": "chunk_005", "text_hash": "sha256:e5f6789012345678901234567890abcdef1234567890abcdef1234567890abcd", "text_len": 140, "role": "conclusion", "page_hint": 1, "offset_hint": 690}
