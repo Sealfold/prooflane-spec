@@ -1,6 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Search Meta",
+  "$id": "https://spec.prooflane.dev/0.1-draft/search_meta.schema.json",
+  "$comment": "errorPrefix: SEARCH_META | missingRequired: ERR_SEARCH_META_MISSING_REQUIRED | typeInvalid: ERR_SEARCH_META_TYPE_INVALID",
+  "title": "Search Metadata",
   "type": "object",
   "required": [
     "encoder",
@@ -9,16 +11,25 @@
   ],
   "properties": {
     "encoder": {
+      "$comment": "ERR_SEARCH_META_ENCODER_INVALID",
       "type": "string"
     },
     "dim": {
-      "type": "integer"
+      "$comment": "ERR_SEARCH_META_DIM_INVALID",
+      "type": "integer",
+      "minimum": 1
     },
     "created": {
+      "$comment": "ERR_SEARCH_META_CREATED_INVALID",
       "type": "string",
       "format": "date-time"
     },
     "align": {
+      "$comment": "ERR_SEARCH_META_ALIGN_INVALID",
+      "type": "string"
+    },
+    "notes": {
+      "$comment": "ERR_SEARCH_META_NOTES_INVALID",
       "type": "string"
     }
   }

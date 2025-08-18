@@ -1,0 +1,6 @@
+{
+  "classification": "internal",
+  "retention": "7_years",
+  "legal_hold": false,
+  "access_control": ["group:legal", "group:compliance"]
+}

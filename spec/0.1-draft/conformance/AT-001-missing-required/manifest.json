@@ -1,0 +1,9 @@
+{
+  "format": "PROOFLANE",
+  "spec_version": "0.1",
+  "title": "Invalid: Missing doc_id",
+  "created": "2025-01-13T10:00:00Z",
+  "latest_commit": "pla:demo:root",
+  "commits": ["history/0001.json"],
+  "workflow": {"state":"workflow/state.json","log":"workflow/log.jsonl"}
+}

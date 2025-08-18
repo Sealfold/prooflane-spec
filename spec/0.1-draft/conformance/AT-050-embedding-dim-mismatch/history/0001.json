@@ -1,0 +1,10 @@
+{
+  "parent": null,
+  "timestamp": "2025-01-13T10:00:00Z",
+  "author": {"name": "Embedder", "email": "embed@example.com"},
+  "purpose": "Add embeddings",
+  "delta": {"added": ["search/metadata.json", "search/embeddings.bin"], "changed": [], "removed": []},
+  "commit_id": "pla:test:emb:0001",
+  "signatures": [],
+  "anchors": []
+}

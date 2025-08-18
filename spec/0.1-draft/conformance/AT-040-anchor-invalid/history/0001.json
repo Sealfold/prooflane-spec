@@ -1,0 +1,10 @@
+{
+  "parent": null,
+  "timestamp": "2025-01-13T10:00:00Z",
+  "author": {"name": "Anchor", "email": "anchor@example.com"},
+  "purpose": "Root",
+  "delta": {"added": [], "changed": [], "removed": []},
+  "commit_id": "pla:test:anch:0001",
+  "signatures": [],
+  "anchors": [{"type": "rfc3161", "token": "not_base64"}]
+}

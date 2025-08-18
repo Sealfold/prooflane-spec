@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "states": ["ingested"],
+  "initial_state": "ingested",
+  "current_state": "ingested",
+  "transitions": []
+}

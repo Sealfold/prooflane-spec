@@ -1,0 +1,10 @@
+{
+  "format": "PROOFLANE",
+  "spec_version": "0.1",
+  "title": "Invalid: Workflow Tampered",
+  "created": "2025-01-13T10:00:00Z",
+  "doc_id": "pla:test:workflow-tampered",
+  "latest_commit": "pla:test:wf:0001",
+  "commits": ["history/0001.json"],
+  "workflow": {"state":"workflow/state.json","log":"workflow/log.jsonl"}
+}

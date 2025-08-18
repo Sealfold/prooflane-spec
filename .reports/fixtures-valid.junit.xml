@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="prooflane-validate" tests="3"><testcase name="C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\valid\minimal\manifest.json" /><testcase name="C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\valid\rag\manifest.json" /><testcase name="C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\valid\sign\manifest.json" /></testsuite>

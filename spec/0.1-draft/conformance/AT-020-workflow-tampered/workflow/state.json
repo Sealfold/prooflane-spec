@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "states": ["draft", "approved"],
+  "initial_state": "draft",
+  "current_state": "approved",
+  "transitions": [{"from":"draft","to":"approved","action":"approve"}]
+}

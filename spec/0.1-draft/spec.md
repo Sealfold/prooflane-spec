@@ -7,6 +7,7 @@ This document defines the Prooflane (.pla) format, an open ZIP-based container f
 ### 1.1 Scope
 
 This specification covers:
+
 - Container format and file structure
 - Manifest schema and validation rules
 - Commit chain and history management
@@ -43,7 +44,7 @@ This specification covers:
 
 ### 2.3 Required Root Structure
 
-```
+```text
 /
 ├── manifest.json              # MUST exist
 ├── history/                   # MUST exist
@@ -102,6 +103,7 @@ The `manifest.json` file MUST contain:
 ### 4.1 Commit File Naming
 
 Commits are stored in `history/NNNN.json` format:
+
 - **Location**: `history/` directory
 - **Format**: Zero-padded 4-digit sequence
 - **Extension**: `.json`
@@ -189,7 +191,8 @@ Each commit MUST contain:
 
 ### 6.2 Embedding Storage
 
-`search/embeddings.bin` contains:
+`search/embeddings.bin` contains (see `docs-vector-embeddings.md` for full format):
+
 - **Format**: Row-major float32 or float16
 - **Endianness**: Little-endian
 - **Dimensions**: Defined in metadata.json
@@ -213,6 +216,7 @@ Each commit MUST contain:
 ### 7.1 Signature Profile
 
 Baseline signature profile (v0.1):
+
 - **Algorithm**: Ed25519
 - **Format**: COSE_Sign1
 - **Canonicalization**: JSON Canonicalization Scheme (JCS)
@@ -252,6 +256,7 @@ Baseline signature profile (v0.1):
 ### 8.1 HTML Requirements
 
 `canonical/index.html` MUST:
+
 - Exist and be accessible
 - Render deterministically (no network fetches)
 - Include proper accessibility markup
@@ -269,6 +274,7 @@ Baseline signature profile (v0.1):
 ### 9.1 Schema Validation
 
 All JSON files MUST:
+
 - Parse as valid JSON
 - Conform to defined schemas
 - Pass schema validation tests
@@ -276,6 +282,7 @@ All JSON files MUST:
 ### 9.2 File Presence Validation
 
 Required files MUST exist:
+
 - `manifest.json` at root
 - All referenced commit files
 - All referenced workflow files
@@ -299,6 +306,7 @@ Required files MUST exist:
 ### 10.2 Test Implementation
 
 Tests MUST:
+
 - Cover all MUST/SHOULD requirements
 - Provide clear error messages
 - Support automated execution
@@ -309,13 +317,15 @@ Tests MUST:
 ### 11.1 W3C PROV Integration
 
 Prooflane commits map to PROV entities:
+
 - **Commit** → **Entity**
 - **Author** → **Agent**
 - **Workflow Action** → **Activity**
 
 ### 11.2 Evidence Export
 
-Support for:
+Support for (see `docs-evidence-export.md` for guidance):
+
 - **ASiC-E**: Advanced Electronic Signatures
 - **PDF/A-3**: PDF for long-term preservation
 - **PAdES**: PDF Advanced Electronic Signatures

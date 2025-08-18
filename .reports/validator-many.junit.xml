@@ -1,0 +1,29 @@
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<testsuite name="prooflane-validator" tests="7" failures="7">
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: title
+\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: created
+\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: doc_id
+\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: latest_commit
+\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: commits
+\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-001-missing-required\manifest.json: missing required field: workflow</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-010-broken-parent">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-010-broken-parent\history\0002.json: Commit[1] parent mismatch: String("pla:fixtures:invalid:010:WRONG") != pla:fixtures:invalid:010:0001</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-020-workflow-tampered">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-020-workflow-tampered\workflow\log.jsonl: workflow/log.jsonl#2: timestamp not monotonic</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-030-signature-mismatch">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-030-signature-mismatch\history\0002.json: latest commit must include at least one signature when security profile is present</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-040-anchor-invalid">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-040-anchor-invalid\history\0002.json: anchors[1].token must start with 'base64:'</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-050-embedding-dim-mismatch">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-050-embedding-dim-mismatch\search\embeddings.bin: embeddings size 8188 != expected 8192 (chunks 2 × dim 1024 × 4)</failure>
+  </testcase>
+  <testcase name="\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-060-unknown-chunk-id">
+    <failure message="validation errors">\\?\C:\Users\CraigM\source\repos\Sealfold\prooflane-fixtures\fixtures\invalid\AT-060-unknown-chunk-id\search\citations.jsonl: citations.jsonl#1: unknown chunk_id 'missing_chunk'</failure>
+  </testcase>
+</testsuite>

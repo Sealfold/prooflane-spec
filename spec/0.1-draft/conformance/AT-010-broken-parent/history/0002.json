@@ -1,0 +1,10 @@
+{
+  "parent": "pla:wrong:parent",
+  "timestamp": "2025-01-13T10:00:00Z",
+  "author": {"name": "Tester", "email": "test@example.com"},
+  "purpose": "Second",
+  "delta": {"added": [], "changed": [], "removed": []},
+  "commit_id": "pla:test:0002",
+  "signatures": [],
+  "anchors": []
+}

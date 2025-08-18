@@ -1,5 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.prooflane.dev/0.1-draft/workflow_event.schema.json",
+  "$comment": "errorPrefix: WORKFLOW_EVENT | missingRequired: ERR_WORKFLOW_EVENT_MISSING_REQUIRED | typeInvalid: ERR_WORKFLOW_EVENT_TYPE_INVALID",
   "title": "Workflow Event",
   "type": "object",
   "required": [
@@ -9,13 +11,16 @@
   ],
   "properties": {
     "ts": {
+      "$comment": "ERR_WORKFLOW_EVENT_TS_INVALID",
       "type": "string",
       "format": "date-time"
     },
     "actor": {
+      "$comment": "ERR_WORKFLOW_EVENT_ACTOR_INVALID",
       "type": "string"
     },
     "action": {
+      "$comment": "ERR_WORKFLOW_EVENT_ACTION_INVALID",
       "type": "string"
     }
   }

@@ -1,0 +1,19 @@
+{
+  "parent": "pla:demo:sign:0001",
+  "timestamp": "2025-01-13T10:05:00Z",
+  "author": {"name": "Alice", "email": "alice@example.com"},
+  "purpose": "Approval signature",
+  "delta": {"added": [], "changed": ["canonical/index.html"], "removed": []},
+  "commit_id": "pla:demo:sign:0002",
+  "signatures": [
+    {
+      "profile": "COSE_Sign1_Ed25519",
+      "protected": {"alg": "EdDSA", "kid": "ed25519:test:alice"},
+      "unprotected": {"cty": "application/cose"},
+      "signature": "base64:cose_signature_placeholder"
+    }
+  ],
+  "anchors": [
+    {"type": "rfc3161", "token": "base64:timestamp_token_placeholder"}
+  ]
+}

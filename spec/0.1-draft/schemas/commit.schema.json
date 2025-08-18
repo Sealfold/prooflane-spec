@@ -1,5 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.prooflane.dev/0.1-draft/commit.schema.json",
+  "$comment": "errorPrefix: COMMIT | missingRequired: ERR_COMMIT_MISSING_REQUIRED | typeInvalid: ERR_COMMIT_TYPE_INVALID",
   "title": "Prooflane Commit",
   "type": "object",
   "required": [
@@ -12,16 +14,19 @@
   ],
   "properties": {
     "parent": {
+      "$comment": "ERR_COMMIT_PARENT_INVALID",
       "type": [
         "string",
         "null"
       ]
     },
     "timestamp": {
+      "$comment": "ERR_COMMIT_TIMESTAMP_INVALID",
       "type": "string",
       "format": "date-time"
     },
     "author": {
+      "$comment": "ERR_COMMIT_AUTHOR_INVALID",
       "type": "object",
       "required": [
         "name",
@@ -29,29 +34,55 @@
       ],
       "properties": {
         "name": {
+          "$comment": "ERR_COMMIT_AUTHOR_NAME_INVALID",
           "type": "string"
         },
         "email": {
+          "$comment": "ERR_COMMIT_AUTHOR_EMAIL_INVALID",
           "type": "string"
         }
       }
     },
     "purpose": {
+      "$comment": "ERR_COMMIT_PURPOSE_INVALID",
       "type": "string"
     },
     "delta": {
+      "$comment": "ERR_COMMIT_DELTA_INVALID",
       "type": "object"
     },
     "workflow_effects": {
+      "$comment": "ERR_COMMIT_WORKFLOW_EFFECTS_INVALID",
       "type": "array"
     },
     "signatures": {
-      "type": "array"
+      "$comment": "ERR_COMMIT_SIGNATURES_INVALID",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["profile", "signature"],
+        "properties": {
+          "profile": { "$comment": "ERR_COMMIT_SIGNATURE_PROFILE_INVALID", "type": "string" },
+          "protected": { "$comment": "ERR_COMMIT_SIGNATURE_PROTECTED_INVALID", "type": "object" },
+          "unprotected": { "$comment": "ERR_COMMIT_SIGNATURE_UNPROTECTED_INVALID", "type": "object" },
+          "signature": { "$comment": "ERR_COMMIT_SIGNATURE_VALUE_INVALID", "type": "string" }
+        }
+      }
     },
     "anchors": {
-      "type": "array"
+      "$comment": "ERR_COMMIT_ANCHORS_INVALID",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "token"],
+        "properties": {
+          "type": { "$comment": "ERR_COMMIT_ANCHOR_TYPE_INVALID", "type": "string" },
+          "token": { "$comment": "ERR_COMMIT_ANCHOR_TOKEN_INVALID", "type": "string" }
+        }
+      }
     },
     "commit_id": {
+      "$comment": "ERR_COMMIT_ID_INVALID",
       "type": "string"
     }
   }

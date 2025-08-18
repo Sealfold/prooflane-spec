@@ -1,0 +1,20 @@
+{
+  "format": "PROOFLANE",
+  "spec_version": "0.1",
+  "title": "Signed Document Example",
+  "created": "2025-01-13T10:00:00Z",
+  "doc_id": "pla:demo:sign:example",
+  "latest_commit": "pla:demo:sign:0002",
+  "commits": [
+    "history/0001.json",
+    "history/0002.json"
+  ],
+  "workflow": {
+    "state": "workflow/state.json",
+    "log": "workflow/log.jsonl"
+  },
+  "security": {
+    "trustchain": "security/trustchain.json",
+    "policies": "security/policies.json"
+  }
+}

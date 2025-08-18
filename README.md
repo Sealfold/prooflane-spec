@@ -114,6 +114,10 @@ The repository includes a specialized AI agent (`spec-agent.md`) that:
 - **Example Validation**: Ensure examples conform to specifications
 - **Cross-Repository Testing**: Test specifications across all dependent repositories
 
+#### CI
+
+GitHub Actions runs the validator on every push/PR to `main`.
+
 ### **Quality Assurance**
 - **Automated Validation**: CI/CD pipeline validation of all specifications
 - **Manual Review**: Expert review of complex specification changes

@@ -1,0 +1,7 @@
+{
+  "encoder": "test-encoder",
+  "dim": 3,
+  "created": "2025-01-13T10:00:00Z",
+  "align": "none",
+  "dtype": "float32"
+}

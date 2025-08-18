@@ -20,6 +20,7 @@ from typing import Dict, List, Tuple, Optional
 from jsonschema import validate, Draft202012Validator, ValidationError
 import hashlib
 import time
+from datetime import datetime
 
 class ProoflaneValidator:
     """Validates Prooflane files against the specification."""
@@ -161,6 +162,10 @@ class ProoflaneValidator:
         for commit_path in manifest.get('commits', []):
             if not self._validate_commit_file(zip_file, commit_path):
                 return False
+        
+        # Validate commit chain integrity and timestamp ordering
+        if not self._validate_commit_chain(zip_file, manifest.get('commits', [])):
+            return False
                 
         # Validate workflow files
         workflow = manifest.get('workflow', {})
@@ -229,15 +234,27 @@ class ProoflaneValidator:
             self.errors.append(f"Failed to read workflow log file {log_path}: {e}")
             return False
             
-        # Validate each line as JSON
+        # Validate each line as JSON and monotonic timestamps if present
+        last_ts: Optional[datetime] = None
         for line_num, line in enumerate(log_content.strip().split('\n'), 1):
             if line.strip():
                 try:
-                    json.loads(line)
+                    event = json.loads(line)
                 except json.JSONDecodeError as e:
                     self.errors.append(f"Invalid JSON in workflow log {log_path} at line {line_num}: {e}")
                     return False
-                    
+                ts_value = event.get('ts')
+                if ts_value is not None:
+                    try:
+                        current_ts = self._parse_iso8601(ts_value)
+                    except Exception:
+                        self.errors.append(f"Invalid timestamp format in {log_path} at line {line_num}: {ts_value}")
+                        return False
+                    if last_ts is not None and current_ts < last_ts:
+                        self.errors.append(f"Non-monotonic workflow log timestamp at line {line_num}")
+                        return False
+                    last_ts = current_ts
+        
         return True
     
     def _validate_search_files(self, zip_file: zipfile.ZipFile, search: dict) -> bool:
@@ -247,11 +264,48 @@ class ProoflaneValidator:
             if not self._validate_chunks_file(zip_file, search['chunks']):
                 return False
                 
-        # Validate metadata file
+        # Validate metadata file and optionally embeddings file size vs dim
+        meta_data: Optional[dict] = None
         if search.get('meta'):
-            if not self._validate_search_metadata(zip_file, search['meta']):
+            try:
+                with zip_file.open(search['meta']) as f:
+                    meta_data = json.load(f)
+            except Exception as e:
+                self.errors.append(f"Failed to parse search metadata file {search['meta']}: {e}")
                 return False
-                
+            try:
+                validate(meta_data, self.schemas['search_meta.schema'])
+            except ValidationError as e:
+                self.errors.append(f"Search metadata validation failed for {search['meta']}: {e.message}")
+                return False
+        
+        # Validate embeddings file size matches metadata dim (if both present)
+        if search.get('embeddings') and meta_data is not None:
+            try:
+                with zip_file.open(search['embeddings']) as f:
+                    raw = f.read()
+            except Exception as e:
+                self.errors.append(f"Failed to read embeddings file {search['embeddings']}: {e}")
+                return False
+            dim = meta_data.get('dim')
+            if not isinstance(dim, int) or dim <= 0:
+                self.errors.append("Invalid 'dim' in search metadata; must be positive integer")
+                return False
+            dtype = meta_data.get('dtype', 'float32')
+            if dtype not in ('float32', 'float16'):
+                self.errors.append("Invalid 'dtype' in search metadata; allowed: 'float32', 'float16'")
+                return False
+            bytes_per_element = 4 if dtype == 'float32' else 2
+            row_size = dim * bytes_per_element
+            if row_size == 0:
+                self.errors.append("Computed row size is zero; invalid 'dim' or 'dtype'")
+                return False
+            if len(raw) == 0 or (len(raw) % row_size) != 0:
+                self.errors.append(
+                    f"Embeddings file length {len(raw)} is not a multiple of dim({dim})*bytes_per_element({bytes_per_element})"
+                )
+                return False
+        
         return True
     
     def _validate_chunks_file(self, zip_file: zipfile.ZipFile, chunks_path: str) -> bool:
@@ -322,7 +376,7 @@ class ProoflaneValidator:
             try:
                 with open(example_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                    
+                
                 if 'manifest' in example_file.name:
                     # Validate manifest schema
                     Draft202012Validator.check_schema(self.schemas['manifest.schema'])
@@ -331,7 +385,7 @@ class ProoflaneValidator:
                     except ValidationError as e:
                         self.errors.append(f'Invalid example {example_file}: {e.message}')
                         all_valid = False
-                        
+                
             except Exception as e:
                 self.errors.append(f'Failed to validate example {example_file}: {e}')
                 all_valid = False
@@ -351,21 +405,66 @@ class ProoflaneValidator:
         print(f"{'='*60}")
         
         if errors:
-            print(f"\n❌ Validation FAILED ({len(errors)} errors)")
+            print(f"\nValidation FAILED ({len(errors)} errors)")
             for error in errors:
                 print(f"  • {error}")
         else:
-            print(f"\n✅ Validation PASSED")
+            print(f"\nValidation PASSED")
             
         if warnings:
-            print(f"\n⚠️  Warnings ({len(warnings)})")
+            print(f"\nWarnings ({len(warnings)})")
             for warning in warnings:
                 print(f"  • {warning}")
                 
-        print(f"\n⏱️  Validation completed in {duration:.2f}s")
+        print(f"\nValidation completed in {duration:.2f}s")
         print(f"{'='*60}")
         
         return len(errors) == 0
+
+    def _validate_commit_chain(self, zip_file: zipfile.ZipFile, commit_paths: List[str]) -> bool:
+        """Validate that commit parents and timestamps form a proper chain."""
+        previous_commit: Optional[dict] = None
+        for index, commit_path in enumerate(commit_paths):
+            try:
+                with zip_file.open(commit_path) as f:
+                    commit_obj = json.load(f)
+            except Exception as e:
+                self.errors.append(f"Failed to parse commit file {commit_path}: {e}")
+                return False
+            # Parent check
+            if index == 0:
+                if commit_obj.get('parent') is not None:
+                    self.errors.append(f"First commit {commit_path} must have parent = null")
+                    return False
+            else:
+                expected_parent = previous_commit.get('commit_id') if previous_commit else None
+                if commit_obj.get('parent') != expected_parent:
+                    self.errors.append(
+                        f"Broken commit chain at {commit_path}: parent {commit_obj.get('parent')} != previous commit_id {expected_parent}"
+                    )
+                    return False
+            # Timestamp monotonicity (strictly increasing)
+            try:
+                current_ts = self._parse_iso8601(commit_obj.get('timestamp'))
+            except Exception:
+                self.errors.append(f"Invalid commit timestamp format in {commit_path}: {commit_obj.get('timestamp')}")
+                return False
+            if previous_commit is not None:
+                prev_ts = self._parse_iso8601(previous_commit.get('timestamp'))
+                if current_ts <= prev_ts:
+                    self.errors.append(
+                        f"Commit timestamps not strictly increasing at {commit_path}"
+                    )
+                    return False
+            previous_commit = commit_obj
+        return True
+
+    def _parse_iso8601(self, value: Optional[str]) -> datetime:
+        """Parse ISO-8601 timestamps including 'Z' suffix."""
+        if value is None:
+            raise ValueError("timestamp is None")
+        clean = value.replace('Z', '+00:00')
+        return datetime.fromisoformat(clean)
 
 def main():
     """Main CLI entry point."""
@@ -449,9 +548,9 @@ Examples:
         try:
             with open(args.output, 'w', encoding='utf-8') as f:
                 json.dump(output_data, f, indent=2)
-            print(f"\n📄 Results written to: {args.output}")
+            print(f"\nResults written to: {args.output}")
         except Exception as e:
-            print(f"❌ Failed to write output file: {e}")
+            print(f"Failed to write output file: {e}")
             
     # Exit with appropriate code
     sys.exit(0 if success else 1)

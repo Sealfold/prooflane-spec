@@ -1,0 +1,90 @@
+{
+  "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid",
+  "cases": [
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required",
+      "findings": [
+        {
+          "message": "missing required field: title",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        },
+        {
+          "message": "missing required field: created",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        },
+        {
+          "message": "missing required field: doc_id",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        },
+        {
+          "message": "missing required field: latest_commit",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        },
+        {
+          "message": "missing required field: commits",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        },
+        {
+          "message": "missing required field: workflow",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-010-broken-parent",
+      "findings": [
+        {
+          "message": "Commit[1] parent mismatch: String(\"pla:fixtures:invalid:010:WRONG\") != pla:fixtures:invalid:010:0001",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-010-broken-parent\\history\\0002.json"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-020-workflow-tampered",
+      "findings": [
+        {
+          "message": "workflow/log.jsonl#2: timestamp not monotonic",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-020-workflow-tampered\\workflow\\log.jsonl"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-030-signature-mismatch",
+      "findings": [
+        {
+          "message": "latest commit must include at least one signature when security profile is present",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-030-signature-mismatch\\history\\0002.json"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-040-anchor-invalid",
+      "findings": [
+        {
+          "message": "anchors[1].token must start with 'base64:'",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-040-anchor-invalid\\history\\0002.json"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-050-embedding-dim-mismatch",
+      "findings": [
+        {
+          "message": "embeddings size 8188 != expected 8192 (chunks 2 × dim 1024 × 4)",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-050-embedding-dim-mismatch\\search\\embeddings.bin"
+        }
+      ]
+    },
+    {
+      "base": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-060-unknown-chunk-id",
+      "findings": [
+        {
+          "message": "citations.jsonl#1: unknown chunk_id 'missing_chunk'",
+          "path": "\\\\?\\C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-060-unknown-chunk-id\\search\\citations.jsonl"
+        }
+      ]
+    }
+  ],
+  "failures": 7,
+  "total_manifests": 7
+}

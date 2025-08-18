@@ -1,0 +1,12 @@
+{
+  "parent": "pla:test:sig:0001",
+  "timestamp": "2025-01-13T10:01:00Z",
+  "author": {"name": "Signer", "email": "signer@example.com"},
+  "purpose": "Signed but then modified",
+  "delta": {"added": [], "changed": ["canonical/index.html"], "removed": []},
+  "commit_id": "pla:test:sig:0002",
+  "signatures": [
+    {"profile": "COSE_Sign1_Ed25519", "signature": "base64:INVALID_SIGNATURE"}
+  ],
+  "anchors": []
+}

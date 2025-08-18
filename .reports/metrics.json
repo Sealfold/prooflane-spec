@@ -1,0 +1,48 @@
+{
+  "fixtures-invalid.junit.xml": {
+    "tests": 7,
+    "failures": 7,
+    "files": [
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json",
+        "error": "6 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'title' is a required property\n[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'created' is a required property\n[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'doc_id' is a required property\n[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'latest_commit' is a required property\n[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'commits' is a required property\n[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-001-missing-required\\manifest.json: <root>: 'workflow' is a required property"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-010-broken-parent\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-010-broken-parent\\manifest.json: commits[1]: parent 'pla:fixtures:invalid:010:WRONG' does not match previous commit_id 'pla:fixtures:invalid:010:0001'"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-020-workflow-tampered\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-020-workflow-tampered\\manifest.json: workflow/log.jsonl#2: timestamp not monotonic (earlier than previous)"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-030-signature-mismatch\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-030-signature-mismatch\\manifest.json: latest commit must include at least one signature when security profile is present"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-040-anchor-invalid\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-040-anchor-invalid\\manifest.json: anchors[1].token must start with 'base64:'"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-050-embedding-dim-mismatch\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-050-embedding-dim-mismatch\\manifest.json: embeddings size 8188 != expected 8192 (num_chunks 2 \u00d7 dim 1024 \u00d7 4)"
+      },
+      {
+        "name": "C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-060-unknown-chunk-id\\manifest.json",
+        "error": "1 errors",
+        "details": "[ERROR] C:\\Users\\CraigM\\source\\repos\\Sealfold\\prooflane-fixtures\\fixtures\\invalid\\AT-060-unknown-chunk-id\\manifest.json: citations.jsonl#1: unknown chunk_id 'missing_chunk'"
+      }
+    ]
+  },
+  "fixtures-valid.junit.xml": {
+    "tests": 3,
+    "failures": 0,
+    "files": []
+  }
+}

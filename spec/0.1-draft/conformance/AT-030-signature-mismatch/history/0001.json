@@ -1,0 +1,10 @@
+{
+  "parent": null,
+  "timestamp": "2025-01-13T10:00:00Z",
+  "author": {"name": "Signer", "email": "signer@example.com"},
+  "purpose": "Root",
+  "delta": {"added": ["canonical/index.html"], "changed": [], "removed": []},
+  "commit_id": "pla:test:sig:0001",
+  "signatures": [],
+  "anchors": []
+}

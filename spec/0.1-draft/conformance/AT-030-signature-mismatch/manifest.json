@@ -1,0 +1,11 @@
+{
+  "format": "PROOFLANE",
+  "spec_version": "0.1",
+  "title": "Invalid: Signature Mismatch",
+  "created": "2025-01-13T10:00:00Z",
+  "doc_id": "pla:test:sig-mismatch",
+  "latest_commit": "pla:test:sig:0002",
+  "commits": ["history/0001.json", "history/0002.json"],
+  "workflow": {"state":"workflow/state.json","log":"workflow/log.jsonl"},
+  "security": {"trustchain": "security/trustchain.json"}
+}

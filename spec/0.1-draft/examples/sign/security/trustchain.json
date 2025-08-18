@@ -1,0 +1,6 @@
+{
+  "signers": [
+    {"id": "alice@example.com", "public_key": "ed25519:TEST_PUBLIC_KEY", "role": "author"}
+  ],
+  "roots": ["test_root_ca"]
+}

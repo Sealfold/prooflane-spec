@@ -1,5 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.prooflane.dev/0.1-draft/workflow_state.schema.json",
+  "$comment": "errorPrefix: WORKFLOW_STATE | missingRequired: ERR_WORKFLOW_STATE_MISSING_REQUIRED | typeInvalid: ERR_WORKFLOW_STATE_TYPE_INVALID",
   "title": "Workflow State",
   "type": "object",
   "required": [
@@ -11,27 +13,33 @@
   ],
   "properties": {
     "version": {
+      "$comment": "ERR_WORKFLOW_STATE_VERSION_INVALID",
       "type": "string"
     },
     "states": {
+      "$comment": "ERR_WORKFLOW_STATE_STATES_INVALID",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "initial_state": {
+      "$comment": "ERR_WORKFLOW_STATE_INITIAL_STATE_INVALID",
       "type": "string"
     },
     "current_state": {
+      "$comment": "ERR_WORKFLOW_STATE_CURRENT_STATE_INVALID",
       "type": "string"
     },
     "transitions": {
+      "$comment": "ERR_WORKFLOW_STATE_TRANSITIONS_INVALID",
       "type": "array",
       "items": {
         "type": "object"
       }
     },
     "guards": {
+      "$comment": "ERR_WORKFLOW_STATE_GUARDS_INVALID",
       "type": "array",
       "items": {
         "type": "object"

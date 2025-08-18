@@ -1,5 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.prooflane.dev/0.1-draft/chunk.schema.json",
+  "$comment": "errorPrefix: CHUNK | missingRequired: ERR_CHUNK_MISSING_REQUIRED | typeInvalid: ERR_CHUNK_TYPE_INVALID",
   "title": "Search Chunk",
   "type": "object",
   "required": [
@@ -9,21 +11,27 @@
   ],
   "properties": {
     "chunk_id": {
+      "$comment": "ERR_CHUNK_ID_INVALID",
       "type": "string"
     },
     "text_hash": {
+      "$comment": "ERR_CHUNK_TEXT_HASH_INVALID",
       "type": "string"
     },
     "text_len": {
+      "$comment": "ERR_CHUNK_TEXT_LEN_INVALID",
       "type": "integer"
     },
     "role": {
+      "$comment": "ERR_CHUNK_ROLE_INVALID",
       "type": "string"
     },
     "page_hint": {
+      "$comment": "ERR_CHUNK_PAGE_HINT_INVALID",
       "type": "integer"
     },
     "offset_hint": {
+      "$comment": "ERR_CHUNK_OFFSET_HINT_INVALID",
       "type": "integer"
     }
   }

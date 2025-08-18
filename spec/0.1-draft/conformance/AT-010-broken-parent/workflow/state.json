@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "states": ["draft"],
+  "initial_state": "draft",
+  "current_state": "draft",
+  "transitions": []
+}
